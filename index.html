@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        td {
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.1s ease-in-out;
+        }
+
+        td:hover {
+            background-color: #a0a0a0;
+            transition: background-color 0.3s ease-in-out;
+        }
+    </style>
+    <title>Hover Highlight Table</title>
+</head>
+<body>
+
+<table id="hoverTable">
+    <tbody></tbody>
+</table>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const table = document.getElementById('hoverTable');
+        const rows = 20;
+        const cols = 20;
+
+        for (let i = 0; i < rows; i++) {
+            const row = document.createElement('tr');
+            for (let j = 0; j < cols; j++) {
+                const cell = document.createElement('td');
+                cell.textContent = '';
+                cell.addEventListener('mouseover', function () {
+                    cell.style.backgroundColor = '#a0a0a0';
+                });
+                cell.addEventListener('mouseout', function () {
+                    setTimeout(() => {
+                        cell.style.backgroundColor = '';
+                    }, 300);
+                });
+                row.appendChild(cell);
+            }
+            table.querySelector('tbody').appendChild(row);
+        }
+    });
+</script>
+
+</body>
+</html>
